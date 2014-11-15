@@ -547,7 +547,7 @@ class clsPmieducarServidor
       $filtros .= "{$whereAnd} EXISTS (SELECT 1
   FROM cadastro.pessoa p
   WHERE cod_servidor = p.idpes
-  AND to_ascii(p.nome) LIKE to_ascii('%$str_nome_servidor%')) ";
+  AND p.nome LIKE '%$str_nome_servidor%') ";
       $whereAnd = " AND ";
     }
 

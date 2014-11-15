@@ -1,30 +1,30 @@
-<?php
+Ôªø<?php
 
 /**
- * i-Educar - Sistema de gest„o escolar
+ * i-Educar - Sistema de gest√£o escolar
  *
- * Copyright (C) 2006  Prefeitura Municipal de ItajaÌ
+ * Copyright (C) 2006  Prefeitura Municipal de Itaja√≠
  *                     <ctima@itajai.sc.gov.br>
  *
- * Este programa È software livre; vocÍ pode redistribuÌ-lo e/ou modific·-lo
- * sob os termos da LicenÁa P˙blica Geral GNU conforme publicada pela Free
- * Software Foundation; tanto a vers„o 2 da LicenÁa, como (a seu critÈrio)
- * qualquer vers„o posterior.
+ * Este programa √© software livre; voc√™ pode redistribu√≠-lo e/ou modific√°-lo
+ * sob os termos da Licen√ßa P√∫blica Geral GNU conforme publicada pela Free
+ * Software Foundation; tanto a vers√£o 2 da Licen√ßa, como (a seu crit√©rio)
+ * qualquer vers√£o posterior.
  *
- * Este programa È distribuÌ≠do na expectativa de que seja ˙til, porÈm, SEM
- * NENHUMA GARANTIA; nem mesmo a garantia implÌ≠cita de COMERCIABILIDADE OU
- * ADEQUA«√O A UMA FINALIDADE ESPECÕFICA. Consulte a LicenÁa P˙blica Geral
+ * Este programa √© distribu√≠¬≠do na expectativa de que seja √∫til, por√©m, SEM
+ * NENHUMA GARANTIA; nem mesmo a garantia impl√≠¬≠cita de COMERCIABILIDADE OU
+ * ADEQUA√á√ÉO A UMA FINALIDADE ESPEC√çFICA. Consulte a Licen√ßa P√∫blica Geral
  * do GNU para mais detalhes.
  *
- * VocÍ deve ter recebido uma cÛpia da LicenÁa P˙blica Geral do GNU junto
- * com este programa; se n„o, escreva para a Free Software Foundation, Inc., no
- * endereÁo 59 Temple Street, Suite 330, Boston, MA 02111-1307 USA.
+ * Voc√™ deve ter recebido uma c√≥pia da Licen√ßa P√∫blica Geral do GNU junto
+ * com este programa; se n√£o, escreva para a Free Software Foundation, Inc., no
+ * endere√ßo 59 Temple Street, Suite 330, Boston, MA 02111-1307 USA.
  *
- * @author    Prefeitura Municipal de ItajaÌ <ctima@itajai.sc.gov.br>
+ * @author    Prefeitura Municipal de Itaja√≠ <ctima@itajai.sc.gov.br>
  * @category  i-Educar
  * @license   http://creativecommons.org/licenses/GPL/2.0/legalcode.pt  CC GNU GPL
  * @package   Ied_Cadastro
- * @since     Arquivo disponÌvel desde a vers„o 1.0.0
+ * @since     Arquivo dispon√≠vel desde a vers√£o 1.0.0
  * @version   $Id$
  */
 
@@ -39,18 +39,18 @@ require_once 'App/Model/ZonaLocalizacao.php';
 /**
  * clsIndex class.
  *
- * @author    Prefeitura Municipal de ItajaÌ <ctima@itajai.sc.gov.br>
+ * @author    Prefeitura Municipal de Itaja√≠ <ctima@itajai.sc.gov.br>
  * @category  i-Educar
  * @license   @@license@@
  * @package   iEd_Cadastro
- * @since     Classe disponÌvel desde a vers„o 1.0.0
+ * @since     Classe dispon√≠vel desde a vers√£o 1.0.0
  * @version   @@package_version@@
  */
 class clsIndex extends clsBase
 {
   function Formular()
   {
-    $this->SetTitulo($this->_instituicao . ' Pessoas FÌsicas - Cadastro');
+    $this->SetTitulo($this->_instituicao . ' Pessoas F√≠sicas - Cadastro');
     $this->processoAp = 43;
   }
 }
@@ -58,11 +58,11 @@ class clsIndex extends clsBase
 /**
  * indice class.
  *
- * @author    Prefeitura Municipal de ItajaÌ <ctima@itajai.sc.gov.br>
+ * @author    Prefeitura Municipal de Itaja√≠ <ctima@itajai.sc.gov.br>
  * @category  i-Educar
  * @license   @@license@@
  * @package   iEd_Cadastro
- * @since     Classe disponÌvel desde a vers„o 1.0.0
+ * @since     Classe dispon√≠vel desde a vers√£o 1.0.0
  * @version   @@package_version@@
  */
 class indice extends clsCadastro
@@ -153,7 +153,7 @@ class indice extends clsCadastro
         'andar', 'zona_localizacao'
       );
 
-      // Cor/RaÁa.
+      // Cor/Ra√ßa.
       $raca = new clsCadastroFisicaRaca($this->cod_pessoa_fj);
       $raca = $raca->detalhe();
       if (is_array($raca)) {
@@ -219,12 +219,12 @@ class indice extends clsCadastro
       $this->campoData('data_nasc', 'Data de Nascimento', $this->data_nasc);
 
       $lista_sexos      = array();
-      $lista_sexos['']  = 'Escolha uma opÁ„o...';
+      $lista_sexos['']  = 'Escolha uma op√ß√£o...';
       $lista_sexos['M'] = 'Masculino';
       $lista_sexos['F'] = 'Feminino';
       $this->campoLista('sexo', 'Sexo', $lista_sexos, $this->sexo);
 
-      // Cor/raÁa.
+      // Cor/ra√ßa.
       $opcoes_raca = array('' => 'Selecione');
       $obj_raca = new clsCadastroRaca();
       $lst_raca = $obj_raca->lista(NULL, NULL, NULL, NULL, NULL, NULL, NULL, TRUE);
@@ -235,10 +235,10 @@ class indice extends clsCadastro
         }
       }
 
-      $this->campoLista('cor_raca', 'RaÁa', $opcoes_raca,
+      $this->campoLista('cor_raca', 'Ra√ßa', $opcoes_raca,
         $this->cod_raca, '', FALSE, '', '', '', FALSE);
 
-      // Detalhes do EndereÁo
+      // Detalhes do Endere√ßo
       $objTipoLog   = new clsTipoLogradouro();
       $listaTipoLog = $objTipoLog->lista();
       $listaTLog    = array('0' => 'Selecione');
@@ -287,11 +287,11 @@ class indice extends clsCadastro
         $this->campoTexto('complemento', 'Complemento',  $this->complemento, '50', '255',
           FALSE);
 
-        $this->campoTexto('numero', 'N˙mero', $this->numero, '10', '10');
+        $this->campoTexto('numero', 'N√∫mero', $this->numero, '10', '10');
 
         $this->campoTexto('letra', 'Letra', $this->letra, '1', '1', FALSE);
 
-        $this->campoTexto('apartamento', 'N˙mero Apartamento', $this->apartamento, '6', '6',
+        $this->campoTexto('apartamento', 'N√∫mero Apartamento', $this->apartamento, '6', '6',
           FALSE);
 
         $this->campoTexto('bloco', 'Bloco', $this->bloco, '20', '20', FALSE);
@@ -317,11 +317,11 @@ class indice extends clsCadastro
         $this->campoTexto('complemento', 'Complemento',  $this->complemento, '50',
           '255', FALSE);
 
-        $this->campoTexto('numero', 'N˙mero', $this->numero, '10', '10');
+        $this->campoTexto('numero', 'N√∫mero', $this->numero, '10', '10');
 
         $this->campoTexto('letra', 'Letra', $this->letra, '1', '1', FALSE);
 
-        $this->campoTexto('apartamento', 'N˙mero Apartamento', $this->apartamento,
+        $this->campoTexto('apartamento', 'N√∫mero Apartamento', $this->apartamento,
           '6', '6', FALSE);
 
         $this->campoTexto('bloco', 'Bloco', $this->bloco, '20', '20', FALSE);
@@ -350,11 +350,11 @@ class indice extends clsCadastro
         $this->campoTexto('complemento', 'Complemento', $this->complemento,
           '50', '255', FALSE);
 
-        $this->campoTexto('numero', 'N˙mero', $this->numero, '10', '10');
+        $this->campoTexto('numero', 'N√∫mero', $this->numero, '10', '10');
 
         $this->campoTexto('letra', 'Letra', $this->letra, '1', '1', FALSE);
 
-        $this->campoTexto('apartamento', 'N˙mero Apartamento', $this->apartamento,
+        $this->campoTexto('apartamento', 'N√∫mero Apartamento', $this->apartamento,
           '6', '6', FALSE);
 
         $this->campoTexto('bloco', 'Bloco', $this->bloco, '20', '20', FALSE);
@@ -365,7 +365,7 @@ class indice extends clsCadastro
           FALSE, FALSE, FALSE, FALSE, FALSE);
       }
 
-      $this->campoLista('zona_localizacao', 'Zona LocalizaÁ„o', $zona->getEnums(),
+      $this->campoLista('zona_localizacao', 'Zona Localiza√ß√£o', $zona->getEnums(),
         $this->zona_localizacao, FALSE, FALSE, FALSE, FALSE,
         ($this->idbai ? TRUE : FALSE)
       );
@@ -427,7 +427,7 @@ class indice extends clsCadastro
 
       $detalhe_fisica = $objCPF->detalhe();
       if ($detalhe_fisica['cpf']) {
-        $this->erros['id_federal'] = 'CPF j· cadastrado.';
+        $this->erros['id_federal'] = 'CPF j√° cadastrado.';
         return FALSE;
       }
     }
@@ -498,7 +498,7 @@ class indice extends clsCadastro
       }
     }
 
-    // Cadastra raÁa.
+    // Cadastra ra√ßa.
     $this->_cadastraRaca($idpes, $this->cor_raca);
 
     echo '<script>document.location="atendidos_lst.php";</script>';
@@ -524,7 +524,7 @@ class indice extends clsCadastro
           FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, $this->id_federal);
 
         if ($objCPF->detalhe()) {
-          $this->erros['id_federal'] = 'CPF j· cadastrado.';
+          $this->erros['id_federal'] = 'CPF j√° cadastrado.';
           return FALSE;
         }
       }
@@ -609,7 +609,7 @@ class indice extends clsCadastro
       }
     }
 
-    // Atualizada raÁa.
+    // Atualizada ra√ßa.
     $this->_cadastraRaca($this->cod_pessoa_fj, $this->cor_raca);
 
     echo '<script>document.location="atendidos_lst.php";</script>';
@@ -623,13 +623,13 @@ class indice extends clsCadastro
   }
 
   /**
-   * Cadastra ou atualiza a raÁa de uma pessoa.
+   * Cadastra ou atualiza a ra√ßa de uma pessoa.
    *
    * @access protected
    * @param  int $pessoaId
    * @param  int $corRaca
    * @return bool
-   * @since  MÈtodo disponÌvel desde a vers„o 1.2.0
+   * @since  M√©todo dispon√≠vel desde a vers√£o 1.2.0
    */
   function _cadastraRaca($pessoaId, $corRaca)
   {
@@ -645,14 +645,14 @@ class indice extends clsCadastro
   }
 }
 
-// Instancia objeto de p·gina
+// Instancia objeto de p√°gina
 $pagina = new clsIndex();
 
-// Instancia objeto de conte˙do
+// Instancia objeto de conte√∫do
 $miolo = new indice();
 
-// Atribui o conte˙do ‡ p·gina
+// Atribui o conte√∫do √† p√°gina
 $pagina->addForm($miolo);
 
-// Gera o cÛdigo HTML
+// Gera o c√≥digo HTML
 $pagina->MakeAll();

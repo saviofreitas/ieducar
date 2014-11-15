@@ -166,7 +166,7 @@ class indice extends clsCadastro
 				m.ref_ref_cod_escola ASC,
 				s.nm_serie,
 				t.nm_turma,
-				to_ascii(t.nm_turma) ASC";
+				t.nm_turma ASC";
 		$db = new clsBanco();
 		$db->Consulta($sql);
 

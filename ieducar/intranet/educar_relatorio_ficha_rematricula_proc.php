@@ -133,7 +133,7 @@ class indice extends clsCadastro
 						AND m.ativo     = 1
 						AND f.idpes = p.idpes
 					ORDER BY
-						to_ascii(p.nome) ASC";
+						p.nome ASC";
 		}
 		else
 		{
@@ -165,7 +165,7 @@ class indice extends clsCadastro
 						AND m.ativo     = 1
 						AND f.idpes     = p.idpes
 					ORDER BY
-						to_ascii(p.nome) ASC";
+						p.nome ASC";
 		}
 		$dados = array();
 		$db = new clsBanco();

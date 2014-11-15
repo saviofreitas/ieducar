@@ -99,7 +99,7 @@
 					$ano = $det_escola_ano_letivo['ano'];
 
 					$obj_matricula_turma = new clsPmieducarMatriculaTurma();
-					$obj_matricula_turma->setOrderby( "nm_curso, nm_serie, nm_turma, to_ascii(p.nome) ASC" );
+					$obj_matricula_turma->setOrderby( "nm_curso, nm_serie, nm_turma, p.nome ASC" );
 
 					$lst_matricula_turma = $obj_matricula_turma->lista3( null,$ref_cod_turma,null,null,null,null,null,null, 1, $ref_ref_cod_serie, $ref_cod_curso, $escola['cod_escola'], null, array( 1, 2, 3 ), null, $ano, 1, true, $semestre );
 					

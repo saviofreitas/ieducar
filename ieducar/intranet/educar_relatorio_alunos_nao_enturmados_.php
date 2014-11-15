@@ -81,7 +81,7 @@
 			$ano = $det_escola_ano_letivo['ano'];
 
 			$obj_matricula_turma = new clsPmieducarMatriculaTurma();
-			$obj_matricula_turma->setOrderby( "nm_curso, nm_serie, to_ascii(nome) ASC" );
+			$obj_matricula_turma->setOrderby( "nm_curso, nm_serie, nome ASC" );
 			$lst_matricula_turma = $obj_matricula_turma->dadosAlunosNaoEnturmados( $ref_cod_escola, $ref_ref_cod_serie, $ref_cod_curso, $ano, true, $semestre );
 			if ( is_array($lst_matricula_turma) )
 			{

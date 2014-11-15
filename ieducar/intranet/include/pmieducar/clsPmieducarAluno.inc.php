@@ -525,7 +525,7 @@ class clsPmieducarAluno
             cadastro.pessoa
           WHERE
             cadastro.pessoa.idpes = ref_idpes
-            AND TO_ASCII(LOWER(nome)) LIKE TO_ASCII(LOWER('%{$str_nome_aluno}%'))
+            AND LOWER(nome) LIKE LOWER('%{$str_nome_aluno}%')
         )";
 
       $whereAnd = ' AND ';
@@ -535,14 +535,14 @@ class clsPmieducarAluno
       $and_resp = '';
 
       if (is_string($str_nome_responsavel)) {
-        $and_nome_pai_mae  = "OR UPPER(TO_ASCII(aluno.nm_pai)) LIKE UPPER(TO_ASCII('%$str_nome_responsavel%')) AND (aluno.tipo_responsavel = 'p')";
+        $and_nome_pai_mae  = "OR UPPER(aluno.nm_pai) LIKE UPPER('%$str_nome_responsavel%') AND (aluno.tipo_responsavel = 'p')";
 
-        $and_nome_pai_mae .= "OR UPPER(TO_ASCII(aluno.nm_mae)) LIKE UPPER(TO_ASCII('%$str_nome_responsavel%')) AND (aluno.tipo_responsavel = 'm')";
+        $and_nome_pai_mae .= "OR UPPER(aluno.nm_mae) LIKE UPPER('%$str_nome_responsavel%') AND (aluno.tipo_responsavel = 'm')";
 
         $and_nome_resp     = "
-          (UPPER(TO_ASCII(pai_mae.nome)) LIKE UPPER(TO_ASCII('%$str_nome_responsavel%'))) AND (aluno.tipo_responsavel = 'm') AND pai_mae.idpes = fisica_aluno.idpes_mae
+          (UPPER(pai_mae.nome) LIKE UPPER('%$str_nome_responsavel%')) AND (aluno.tipo_responsavel = 'm') AND pai_mae.idpes = fisica_aluno.idpes_mae
           OR
-          (UPPER(TO_ASCII(pai_mae.nome)) LIKE UPPER(TO_ASCII('%$str_nome_responsavel%'))) AND (aluno.tipo_responsavel = 'p') AND pai_mae.idpes = fisica_aluno.idpes_pai";
+          (UPPER(pai_mae.nome) LIKE UPPER('%$str_nome_responsavel%')) AND (aluno.tipo_responsavel = 'p') AND pai_mae.idpes = fisica_aluno.idpes_pai";
 
         $and_resp = ' AND ';
       }
@@ -593,12 +593,12 @@ class clsPmieducarAluno
     }
 
     if (is_string($str_nm_pai)) {
-      $filtros .= "{$whereAnd} TO_ASCII(LOWER(nm_pai)) nm_pai LIKE TO_ASCII(LOWER('%{$str_nm_pai}%'))";
+      $filtros .= "{$whereAnd} LOWER(nm_pai) nm_pai LIKE LOWER('%{$str_nm_pai}%')";
       $whereAnd = ' AND ';
     }
 
     if (is_string($str_nm_mae)) {
-      $filtros .= "{$whereAnd} TO_ASCII(LOWER(nm_mae)) LIKE TO_ASCII(LOWER('%{$str_nm_mae}%'))";
+      $filtros .= "{$whereAnd} LOWER(nm_mae) LIKE LOWER('%{$str_nm_mae}%')";
       $whereAnd = ' AND ';
     }
 
@@ -749,7 +749,7 @@ class clsPmieducarAluno
                        cadastro.pessoa
                      WHERE
                        cadastro.pessoa.idpes = ref_idpes
-                       AND TO_ASCII(LOWER(nome)) LIKE TO_ASCII(LOWER('%{$str_nome_aluno}%'))
+                       AND LOWER(nome) LIKE LOWER('%{$str_nome_aluno}%')
                    )";
 
       $whereAnd = ' AND ';
@@ -759,14 +759,14 @@ class clsPmieducarAluno
       $and_resp = '';
 
       if (is_string($str_nome_responsavel)) {
-        $and_nome_pai_mae  = "OR UPPER(TO_ASCII(aluno.nm_pai)) LIKE UPPER(TO_ASCII('%$str_nome_responsavel%')) AND (aluno.tipo_responsavel = 'p')";
+        $and_nome_pai_mae  = "OR UPPER(aluno.nm_pai) LIKE UPPER('%$str_nome_responsavel%') AND (aluno.tipo_responsavel = 'p')";
 
-        $and_nome_pai_mae .= "OR UPPER(TO_ASCII(aluno.nm_mae)) LIKE UPPER(TO_ASCII('%$str_nome_responsavel%')) AND (aluno.tipo_responsavel = 'm')";
+        $and_nome_pai_mae .= "OR UPPER(aluno.nm_mae) LIKE UPPER('%$str_nome_responsavel%') AND (aluno.tipo_responsavel = 'm')";
 
         $and_nome_resp     = "
-          (UPPER(TO_ASCII(pai_mae.nome)) LIKE UPPER(TO_ASCII('%$str_nome_responsavel%'))) AND (aluno.tipo_responsavel = 'm') AND pai_mae.idpes = fisica_aluno.idpes_mae
+          (UPPER(pai_mae.nome) LIKE UPPER('%$str_nome_responsavel%')) AND (aluno.tipo_responsavel = 'm') AND pai_mae.idpes = fisica_aluno.idpes_mae
           OR
-          (UPPER(TO_ASCII(pai_mae.nome)) LIKE UPPER(TO_ASCII('%$str_nome_responsavel%'))) AND (aluno.tipo_responsavel = 'p') AND pai_mae.idpes = fisica_aluno.idpes_pai";
+          (UPPER(pai_mae.nome) LIKE UPPER('%$str_nome_responsavel%')) AND (aluno.tipo_responsavel = 'p') AND pai_mae.idpes = fisica_aluno.idpes_pai";
 
         $and_resp = 'AND';
       }
@@ -816,12 +816,12 @@ class clsPmieducarAluno
     }
 
     if (is_string($str_nm_pai)) {
-      $filtros .= "{$whereAnd} TO_ASCII(LOWER(nm_pai)) nm_pai LIKE TO_ASCII(LOWER('%{$str_nm_pai}%'))";
+      $filtros .= "{$whereAnd} LOWER(nm_pai) nm_pai LIKE LOWER('%{$str_nm_pai}%')";
       $whereAnd = ' AND ';
     }
 
     if (is_string($str_nm_mae)) {
-      $filtros .= "{$whereAnd} TO_ASCII(LOWER(nm_mae)) LIKE TO_ASCII(LOWER('%{$str_nm_mae}%'))";
+      $filtros .= "{$whereAnd} LOWER(nm_mae) LIKE LOWER('%{$str_nm_mae}%')";
       $whereAnd = ' AND ';
     }
 

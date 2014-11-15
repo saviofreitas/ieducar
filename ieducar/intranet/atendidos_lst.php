@@ -1,4 +1,4 @@
-<?php
+ï»¿<?php
 $desvio_diretorio = "";
 require_once ("include/clsBase.inc.php");
 require_once ("include/clsListagem.inc.php");
@@ -9,7 +9,7 @@ class clsIndex extends clsBase
 
 	function Formular()
 	{
-		$this->SetTitulo( "Pessoas Físicas" );
+		$this->SetTitulo( "Pessoas FÃ­sicas" );
 		$this->processoAp = "43";
 	}
 }
@@ -18,7 +18,7 @@ class indice extends clsListagem
 {
 	function Gerar()
 	{
-		$this->titulo = "Pessoas Físicas";
+		$this->titulo = "Pessoas FÃ­sicas";
 		$this->addBanner( "imagens/nvp_top_intranet.jpg", "imagens/nvp_vert_intranet.jpg", "Intranet" );
 
 		$this->addCabecalhos( array( "Nome", "CPF") );

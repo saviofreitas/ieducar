@@ -1,24 +1,24 @@
-<?php
+Ôªø<?php
 
 /*
- * i-Educar - Sistema de gest„o escolar
+ * i-Educar - Sistema de gest√£o escolar
  *
- * Copyright (C) 2006  Prefeitura Municipal de ItajaÌ
+ * Copyright (C) 2006  Prefeitura Municipal de Itaja√≠
  *                     <ctima@itajai.sc.gov.br>
  *
- * Este programa È software livre; vocÍ pode redistribuÌ-lo e/ou modific·-lo
- * sob os termos da LicenÁa P˙blica Geral GNU conforme publicada pela Free
- * Software Foundation; tanto a vers„o 2 da LicenÁa, como (a seu critÈrio)
- * qualquer vers„o posterior.
+ * Este programa √© software livre; voc√™ pode redistribu√≠-lo e/ou modific√°-lo
+ * sob os termos da Licen√ßa P√∫blica Geral GNU conforme publicada pela Free
+ * Software Foundation; tanto a vers√£o 2 da Licen√ßa, como (a seu crit√©rio)
+ * qualquer vers√£o posterior.
  *
- * Este programa È distribuÌ≠do na expectativa de que seja ˙til, porÈm, SEM
- * NENHUMA GARANTIA; nem mesmo a garantia implÌ≠cita de COMERCIABILIDADE OU
- * ADEQUA«√O A UMA FINALIDADE ESPECÕFICA. Consulte a LicenÁa P˙blica Geral
+ * Este programa √© distribu√≠¬≠do na expectativa de que seja √∫til, por√©m, SEM
+ * NENHUMA GARANTIA; nem mesmo a garantia impl√≠¬≠cita de COMERCIABILIDADE OU
+ * ADEQUA√á√ÉO A UMA FINALIDADE ESPEC√çFICA. Consulte a Licen√ßa P√∫blica Geral
  * do GNU para mais detalhes.
  *
- * VocÍ deve ter recebido uma cÛpia da LicenÁa P˙blica Geral do GNU junto
- * com este programa; se n„o, escreva para a Free Software Foundation, Inc., no
- * endereÁo 59 Temple Street, Suite 330, Boston, MA 02111-1307 USA.
+ * Voc√™ deve ter recebido uma c√≥pia da Licen√ßa P√∫blica Geral do GNU junto
+ * com este programa; se n√£o, escreva para a Free Software Foundation, Inc., no
+ * endere√ßo 59 Temple Street, Suite 330, Boston, MA 02111-1307 USA.
  */
 
 require_once 'include/clsBanco.inc.php';
@@ -27,10 +27,10 @@ require_once 'include/clsBanco.inc.php';
 /**
  * clsControlador class.
  *
- * @author   Prefeitura Municipal de ItajaÌ <ctima@itajai.sc.gov.br>
+ * @author   Prefeitura Municipal de Itaja√≠ <ctima@itajai.sc.gov.br>
  * @license  http://creativecommons.org/licenses/GPL/2.0/legalcode.pt  CC GNU GPL
  * @package  Core
- * @since    Classe disponÌvel desde a vers„o 1.0.0
+ * @since    Classe dispon√≠vel desde a vers√£o 1.0.0
  * @version  $Id$
  */
 class clsControlador
@@ -70,7 +70,7 @@ class clsControlador
         $_SESSION['menu_atual'] = $_GET['categoria'];
       }
       else {
-        // Est· apagando vari·vel session com o Ìndice dado por $_GET
+        // Est√° apagando vari√°vel session com o √≠ndice dado por $_GET
         unset($_SESSION['menu_opt'][$_GET['categoria']]);
         if ($_SESSION['menu_atual'] == $_GET['categoria']) {
           unset($_SESSION['menu_atual']);
@@ -87,7 +87,7 @@ class clsControlador
   }
 
   /**
-   * Retorna TRUE para usu·rio logado
+   * Retorna TRUE para usu√°rio logado
    * @return  boolean
    */
   public function Logado()
@@ -96,7 +96,7 @@ class clsControlador
   }
 
   /**
-   * Faz o login do usu·rio.
+   * Faz o login do usu√°rio.
    * @param  mixed  $acao
    */
   public function Logar($acao)
@@ -112,17 +112,17 @@ class clsControlador
       {
         list($idpes) = $db->Tupla();
 
-        // Padr„o: meia hora atr·s
+        // Padr√£o: meia hora atr√°s
         $intervalo = date("Y-m-d H:i", time() - (60 * 1 ));
 
-        // Se o ˙ltimo login bem sucedido foi em menos de meia hora, conta somente dali para a frente
+        // Se o √∫ltimo login bem sucedido foi em menos de meia hora, conta somente dali para a frente
         $db->consulta("SELECT data_hora FROM acesso WHERE cod_pessoa = '{$idpes}' AND data_hora > '{$intervalo}' AND sucesso = 't' ORDER BY data_hora DESC LIMIT 1" );
         if ($db->Num_Linhas()) {
           $db->ProximoRegistro();
           list($intervalo) = $db->Tupla();
         }
 
-        // Trava usu·rio se tentar login mais de 5 vezes
+        // Trava usu√°rio se tentar login mais de 5 vezes
         $tentativas = $db->CampoUnico("SELECT COUNT(0) FROM acesso WHERE cod_pessoa = '{$idpes}' AND data_hora > '{$intervalo}' AND sucesso = 'f'" );
         if ($tentativas > 5)
         {
@@ -133,7 +133,7 @@ class clsControlador
           $data_libera = date("d/m/Y H:i",
             strtotime($hora_ultima_tentativa) + (60 * 30));
 
-          die("<html><body></body><script>alert('Houveram mais de 5 tentativas frustradas de acessar a sua conta na ˙ltima meia hora.\\nPor seguranÁa, sua conta ficar· interditada atÈ: {$data_libera}');document.location.href='/intranet';</script></html>");
+          die("<html><body></body><script>alert('Houveram mais de 5 tentativas frustradas de acessar a sua conta na √∫ltima meia hora.\\nPor seguran√ßa, sua conta ficar√° interditada at√©: {$data_libera}');document.location.href='/intranet';</script></html>");
         }
 
         $db->Consulta( "SELECT ref_cod_pessoa_fj, opcao_menu, ativo, tempo_expira_senha, tempo_expira_conta, data_troca_senha, data_reativa_conta, proibido, ref_cod_setor_new, tipo_menu FROM funcionario WHERE ref_cod_pessoa_fj = '{$idpes}' AND senha = '{$senha}'" );
@@ -147,7 +147,7 @@ class clsControlador
           {
             if ($ativo)
             {
-              // Usu·rio ativo, verifica se a conta expirou
+              // Usu√°rio ativo, verifica se a conta expirou
               $expirada = FALSE;
               if (!empty($tempo_conta) && !empty($data_conta))
               {
@@ -158,7 +158,7 @@ class clsControlador
                 }
               }
 
-              // Vendo se a senha n„o expirou
+              // Vendo se a senha n√£o expirou
               if (!empty($tempo_senha) && ! empty($data_senha)) {
                 if (time() - strtotime($data_senha) > $tempo_senha * 60 * 60 * 24) {
                   // Senha expirada, pede que mude a senha
@@ -166,10 +166,10 @@ class clsControlador
                 }
               }
 
-              // Pega o endereÁo IP do host, primeiro com HTTP_X_FORWARDED_FOR (para pegar o IP real
-              // caso o host esteja atr·s de um proxy)
+              // Pega o endere√ßo IP do host, primeiro com HTTP_X_FORWARDED_FOR (para pegar o IP real
+              // caso o host esteja atr√°s de um proxy)
               if (isset($_SERVER['HTTP_X_FORWARDED_FOR']) && $_SERVER['HTTP_X_FORWARDED_FOR'] != '') {
-                // No caso de m˙ltiplos IPs, pega o ˙ltimo da lista
+                // No caso de m√∫ltiplos IPs, pega o √∫ltimo da lista
                 $ip = explode(',', $_SERVER['HTTP_X_FORWARDED_FOR']);
                 $ip_maquina = trim(array_pop($ip));
               }
@@ -187,7 +187,7 @@ class clsControlador
                 {
                   if (abs(time() - strftime("now") - strtotime($data_login)) <= 10 * 60
                     && $ip_banco != $ip_maquina) {
-                    die("<html><body></body><script>alert('Conta j· em uso.\\nTente novamente mais tarde');document.location.href='/intranet';</script></html>");
+                    die("<html><body></body><script>alert('Conta j√° em uso.\\nTente novamente mais tarde');document.location.href='/intranet';</script></html>");
                   }
                   else {
                     $sql = "UPDATE funcionario SET data_login = NOW() WHERE ref_cod_pessoa_fj = {$id_pessoa}";
@@ -200,7 +200,7 @@ class clsControlador
                 }
               }
 
-              // Login do usu·rio, grava dados na sess„o
+              // Login do usu√°rio, grava dados na sess√£o
               @session_start();
               $_SESSION = array();
               $_SESSION['itj_controle'] = 'logado';
@@ -217,7 +217,7 @@ class clsControlador
               if (!empty($tempo_conta) && !empty($data_conta))
               {
                 if (time() - strtotime( $data_conta ) > $tempo_conta * 60 * 60 * 24) {
-                  $this->erroMsg = "Sua conta expirou. Contacte o administrador para reativ·-la.";
+                  $this->erroMsg = "Sua conta expirou. Contacte o administrador para reativ√°-la.";
                   $expirada = 1;
                 }
                 else {
@@ -236,7 +236,7 @@ class clsControlador
         else
         {
           if (isset($_SERVER['HTTP_X_FORWARDED_FOR']) && $_SERVER['HTTP_X_FORWARDED_FOR'] != '') {
-            // No caso de m˙ltiplos IPs, pega o ˙ltimo da lista
+            // No caso de m√∫ltiplos IPs, pega o √∫ltimo da lista
             $ip = explode(',', $_SERVER['HTTP_X_FORWARDED_FOR']);
             $ip_de_rede = trim(array_pop($ip));
           }
@@ -273,7 +273,7 @@ class clsControlador
   }
 
   /**
-   * Executa o login do usu·rio.
+   * Executa o login do usu√°rio.
    */
   public function obriga_Login()
   {

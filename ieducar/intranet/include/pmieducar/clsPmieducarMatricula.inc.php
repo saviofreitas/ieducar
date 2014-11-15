@@ -698,7 +698,7 @@ class clsPmieducarMatricula
     }
 
     if (is_string($int_matricula_reclassificacao)) {
-      $filtros .= "{$whereAnd} to_ascii(a.matricula_reclassificacao) like to_ascii('%{$int_matricula_reclassificacao}%')";
+      $filtros .= "{$whereAnd} a.matricula_reclassificacao like '%{$int_matricula_reclassificacao}%'";
       $whereAnd = " AND ";
     }
 
